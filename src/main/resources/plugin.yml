@@ -1,0 +1,11 @@
+name: Ghosthunt
+version: '${version}'
+main: me.numilani.ghosthunt.Ghosthunt
+api-version: 1.18
+depend:
+  - Vault
+  - BKCommonLib
+  - WorldEdit
+  - WorldGuard
+authors: [ Numilani ]
+database: true
