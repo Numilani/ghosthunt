@@ -1,9 +1,8 @@
 package me.numilani.ghosthunt
 
-import cloud.commandframework.bukkit.BukkitCommandManager
 import com.bergerkiller.bukkit.common.PluginBase
 import com.bergerkiller.bukkit.common.cloud.CloudSimpleHandler
-import me.numilani.ghosthunt.commands.GhosthuntDebug
+import me.numilani.ghosthunt.commands.ArenaCommands
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.command.CommandSender
@@ -26,31 +25,25 @@ class Ghosthunt() : PluginBase() {
             }
             DriverManager.getConnection("jdbc:sqlite:$dbfile")
         } catch (e: SQLException) {
+            DbConn.close()
             throw RuntimeException(e)
         }
 
         // Parse and register all commands
         Handler.enable(this)
-        var debugCmds = Handler.parser.parse(GhosthuntDebug(this))
-//        for (cmd in debugCmds){
-//            Bukkit.getLogger().info("Registered command ${cmd.toString()} on load.")
-//            Handler.manager.command(cmd)
-//        }
+        Handler.parser.parse(ArenaCommands(this))
 
-        Bukkit.getLogger().info(ChatColor.GREEN.toString() + "Enabled " + this.name)
     }
 
     fun InitializeDatabase(dbfn:String){
         var conn = DriverManager.getConnection("jdbc:sqlite:$dbfn")
         var s = conn.createStatement()
-        s.execute("CREATE TABLE Arenas (Id INTEGER PRIMARY KEY, Name TEXT, GhostStartPts TEXT, PlayerStartPts TEXT)")
+        s.execute("CREATE TABLE Arenas (Id INTEGER PRIMARY KEY, Name TEXT UNIQUE, GhostStartPts TEXT, PlayerStartPts TEXT, LobbyStartPts TEXT)")
         conn.close()
     }
 
     override fun disable() {
         DbConn.close()
-        Bukkit.getLogger().info(ChatColor.GREEN.toString() + "Disabled " + this.name)
-
     }
 
     override fun command(sender: CommandSender?, command: String?, args: Array<out String>?): Boolean {

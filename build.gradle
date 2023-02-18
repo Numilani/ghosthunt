@@ -21,7 +21,16 @@ repositories {
         url = 'https://ci.mg-dev.eu/plugin/repository/everything'
     }
     maven {
+        name = 'worldguard-repo'
         url = 'https://maven.enginehub.org/repo/'
+    }
+    maven {
+        name = 'weapon-mechanics'
+        url = 'https://maven.pkg.github.com/WeaponMechanics/MechanicsMain'
+        credentials {
+            username = findProperty("github-user").toString()
+            password = findProperty("github-passtoken").toString()
+        }
     }
 }
 
@@ -35,6 +44,8 @@ dependencies {
     compileOnly 'org.bergerhealer.cloud.commandframework:cloud-paper:1.6.0'
     compileOnly 'org.bergerhealer.cloud.commandframework:cloud-annotations:1.8.0-SNAPSHOT'
     compileOnly 'org.bergerhealer.cloud.commandframework:cloud-minecraft-extras:1.8.0-SNAPSHOT'
+    compileOnly 'mee.deecaad:mechanicscore:+'
+    compileOnly 'mee.deecaad:weaponmechanics:+'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
