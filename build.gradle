@@ -44,8 +44,8 @@ dependencies {
     compileOnly 'org.bergerhealer.cloud.commandframework:cloud-paper:1.6.0'
     compileOnly 'org.bergerhealer.cloud.commandframework:cloud-annotations:1.8.0-SNAPSHOT'
     compileOnly 'org.bergerhealer.cloud.commandframework:cloud-minecraft-extras:1.8.0-SNAPSHOT'
-    compileOnly 'mee.deecaad:mechanicscore:+'
-    compileOnly 'mee.deecaad:weaponmechanics:+'
+//    compileOnly 'mee.deecaad:mechanicscore:+'
+//    compileOnly 'mee.deecaad:weaponmechanics:+'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 

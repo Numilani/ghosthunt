@@ -3,6 +3,7 @@ package me.numilani.ghosthunt
 import com.bergerkiller.bukkit.common.PluginBase
 import com.bergerkiller.bukkit.common.cloud.CloudSimpleHandler
 import me.numilani.ghosthunt.commands.ArenaCommands
+import me.numilani.ghosthunt.commands.DebugCommands
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.command.CommandSender
@@ -32,6 +33,7 @@ class Ghosthunt() : PluginBase() {
         // Parse and register all commands
         Handler.enable(this)
         Handler.parser.parse(ArenaCommands(this))
+        Handler.parser.parse(DebugCommands(this))
 
     }
 
